@@ -1,0 +1,57 @@
+patch:
+  "style/label_font_point": 16
+  "style/vertical_text": true
+  "schema/full_icon": "icons/full.ico"
+  "style/layout/spacing": 18
+  "style/horizontal": true
+  "style/layout/hilite_spacing": 10
+  "style/layout/max_height": 2800
+  "style/layout/min_height": 0
+  "style/enhanced_position": true
+  "style/layout/candidate_spacing": 15
+  "style/candidate_abbreviate_length": 0
+  "style/mouse_hover_ms": 0
+  "style/layout/shadow_radius": 8
+  "style/label_format": "%s."
+  "style/layout/shadow_offset_x": "-8"
+  "style/fullscreen": false
+  "show_notifications": true
+  "show_notifications_time": 1400
+  "style/vertical_text_left_to_right": true
+  "style/comment_font_point": 14
+  "style/ascii_tip_follow_cursor": true
+  "style/color_scheme": "dark_temple"
+  "style/mark_text": ""
+  "style/display_tray_icon": false
+  "style/vertical_auto_reverse": false
+  "style/font_face": "霞鹜文楷 GB 屏幕阅读版"
+  "style/paging_on_scroll": true
+  "style/layout/shadow_offset_y": "8"
+  "style/hover_type": none
+  "schema/half_icon": "icons/half.ico"
+  "style/antialias_mode": default
+  "style/inline_preedit": false
+  "style/layout/hilite_padding_x": 5
+  "style/color_scheme_dark": "dark_temple"
+  "style/layout/type": vertical
+  "menu/alternative_select_labels": [1,2,3,4,5,6,7,8,9,]
+  "style/layout/max_width": 2800
+  "style/click_to_capture": true
+  "style/layout/hilite_padding": 5
+  "style/layout/min_width": 80
+  "style/layout/margin_x": 12
+  "style/layout/corner_radius": 8
+  "schema/ascii_icon": "icons/en.ico"
+  "style/layout/margin_y": 12
+  "style/font_point": 16
+  "style/layout/hilite_padding_y": 5
+  "style/vertical_text_with_wrap": false
+  "style/layout/round_corner": 8
+  "style/comment_font_face": "霞鹜文楷 GB 屏幕阅读版"
+  "global_ascii": false
+  "style/layout/border_width": 1
+  "style/layout/align_type": center
+  "style/preedit_type": composition
+  "schema/icon": "icons/tigress.ico"
+  "style/label_font_face": "霞鹜文楷 GB 屏幕阅读版"
+  "style/layout/border": 1

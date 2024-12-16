@@ -1,0 +1,139 @@
+# Rime table
+#@/db_name	tigress
+#@/db_type	tabledb
+#@/rime_version	1.11.2
+#@/tick	181
+：	;	2
+；	;	1
+！	;a	1
+来	a	1
+书	aa	1
+装	agti	1
+表情	atha	1
+表	ati	1
+中	d	4
+咋	dw	1
+也	e	1
+村	ekc	1
+查	eof	1
+一	f	1
+事	fd	2
+吞吞吐吐	ffdd	1
+𠁠	ffff	1
+福祉	fffs	1
+百万富翁	ffwh	1
+助	fsl	1
+正则	fsop	1
+亡	fw	1
+下半	fyhu	2
+就	g	1
+高	gg	1
+高亮	gggo	1
+列表	gpat	1
+着	gq	1
+道	h	1
+情	ha	1
+彭芳	hell	1
+八格牙路	help	1
+分区	hpnb	1
+单	hq	1
+半	hu	2
+新手	ieus	1
+编码	immn	2
+编成	imna	1
+人	j	1
+亿	jai	1
+念经	jair	1
+亿图	jarh	1
+全	jn	1
+全包	jnnv	1
+像	jwx	1
+你好	jxbh	1
+清	kav	1
+波	krp	1
+滤	kzh	1
+英文	lmvw	4
+大	md	1
+区	nb	1
+右	nd	2
+左半	nuhu	1
+左右	nund	3
+左上	nuyf	1
+包	nvs	6
+是	o	1
+电信	oajs	1
+电脑	oavz	1
+显示	ocfs	1
+电信区	ojnb	1
+州	oo	1
+精准	pawu	1
+走亲戚	piny	1
+临时	prok	3
+牛马	qnnm	1
+了	r	1
+围	rgw	7
+图	rhw	1
+切换	rpux	5
+双拼	rruh	2
+笔画	rvfq	2
+请问	saad	1
+词	saf	2
+语法高亮	skgg	6
+此电脑	sovz	1
+此	sv	1
+语法	swkg	1
+斥地	tige	1
+陪餐	tigr	1
+用	ty	1
+用不	tycb	1
+的	u	2
+打击	uaum	1
+集	ue	1
+拼音	uhxy	3
+手	us	1
+拆	uti	2
+扩	uxg	1
+刘清波	vkkr	4
+刘	vp	1
+这里	vudl	1
+这个	vujg	1
+比	vv	1
+写	wf	1
+字	whi	2
+得	wo	1
+冥	woa	1
+鰑	wof	1
+𠖵	wome	1
+冷暖自知	wooo	1
+字符集	wrue	1
+韵	xnw	1
+反	xr	1
+反查	xreo	3
+角	xty	2
+到	y	1
+上中下	ydfy	1
+上下	yffy	1
+上半	yfhu	1
+81616757@qq.com	yx	1
+小鹤	yxwu	1
+可以	z	1
+虎	zhh	1
+虎码	zhmn	6
+麻	zm	1
+镜	zxp	2
+表情滤镜	encahkz	1
+下半包围	encfhnr	1
+亿图	encjarh	1
+全包围	encjnrg	1
+右下半包围	encnfhr	1
+右半包围	encnhnr	1
+左半包围	encnhnr	1
+左右镜像	encnnzj	1
+左上半包围	encnyhr	1
+电信区	encojnb	1
+精准打击	encpwuu	1
+语法高亮	encskgg	1
+此电脑	encsovz	1
+刘清波	encvkkr	1
+上半包围	encyhnr	1
+虎码新手村	enczmie	1

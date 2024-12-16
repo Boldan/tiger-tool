@@ -1,0 +1,310 @@
+schema:
+  schema_id: tigress
+  name: "虎词"
+  version: "6.1"
+  author:
+    - 發明人
+  description: |
+    虎码
+  dependencies:
+    - core2022
+    - PY_c
+    - easy_english
+    - stroke
+switches:
+  - name: extended_char
+    reset: 1
+    states: [ 全集,常用 ]
+  - name: ascii_mode
+    reset: 0
+    states: [ 中,英 ]
+  - name: zh_trad
+    reset: 0
+    states: [ 简,繁 ]
+  - name: new_spelling
+    reset: 0
+    states: [ 拆隐,拆显 ]
+  - name: single_char
+    reset: 0
+    states: [ 词,单 ]
+  - name: rvl_zhuyin
+    reset: 1
+    states: [ 形,拼 ]
+  - name: emoji_cn
+    reset: 0
+    states: [ 🈚, 🈶 ]
+  - name: ascii_punct
+    reset: 0
+    states: [ 。，,．， ]
+  - name: full_shape
+    reset: 0
+    states: [ 半,全 ]
+  - name: charset_comment_filter
+    reset: 0
+    states: [ U区关, U区开 ]
+  - name: udpf_switch
+    reset: 0
+    states: [ U编关, U编开]
+  - name: GB2312
+    reset: 0
+    states: [ 扩,常 ]
+  - name: new_hide_pinyin
+    reset: 0
+    states: [ 音,哑 ]
+engine:
+  filters:
+    - lua_filter@core2022
+    - simplifier
+    - simplifier@zh_trad
+    - "reverse_lookup_filter@ci_reverse_lookup"
+    - "lua_filter@new_spelling@spelling"
+    - "lua_filter@*multiline*Multiline_filter"
+    - simplifier@rvl_zhuyin
+    - simplifier@new_spelling
+    - simplifier@emoji_cn
+    - lua_filter@charset_comment_filter
+    - lua_filter@lua_unicode_display_filter
+    - lua_filter@single_char
+    - uniquifier
+  processors:
+    - ascii_composer
+    - "lua_processor@submit_text_processor"
+    - "lua_processor@switch_processor"
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - "affix_segmentor@mkst"
+    - "affix_segmentor@rvlk1"
+    - "affix_segmentor@rvl_zhuyin"
+    - affix_segmentor@easy_english
+    - affix_segmentor@stroke
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - "table_translator@rvlk1"
+    - table_translator
+    - "table_translator@fixed"
+    - "table_translator@mkst"
+    - "table_translator@rvl_zhuyin"
+    - "history_translator@history"
+    - "lua_translator@helper"
+    - "lua_translator@time_date"
+    - table_translator@easy_english
+    - table_translator@stroke
+    - lua_translator@number_translator
+    - lua_translator@calculator_translator
+    - lua_translator@shijian2_translator
+speller:
+  auto_select: true
+  auto_clear: max_length
+  delimiter: "`"
+  max_code_length: 99
+  alphabet: "[;'zyxwvutsrqponmlkjihgfedcba=]"
+translator:
+  dictionary: tigress.extended
+  db_class: tabledb
+  initial_quality: 100000
+  enable_charset_filter: false
+  enable_sentence: false
+  enable_encoder: false
+  encode_commit_history: false
+  max_phrase_length: 99
+  enable_completion: true
+  enable_user_dict: false
+  comment_format:
+    - "xform/~/ /"
+fixed:
+  db_class: tabledb
+  dictionary: tigress.extended
+  enable_charset_filter: false
+  enable_completion: false
+  enable_encoder: true
+  enable_sentence: false
+  enable_user_dict: true
+  encode_commit_history: false
+  initial_quality: 1000
+  max_phrase_length: 9
+mkst:
+  db_class: tabledb
+  dictionary: tigress.extended
+  enable_charset_filter: false
+  enable_completion: false
+  enable_encoder: false
+  enable_sentence: true
+  enable_user_dict: false
+  encode_commit_history: false
+  initial_quality: 10
+  max_phrase_length: 99
+  prefix: "`"
+  tag: mkst
+  tips: "〔精准造词〕"
+rvl_zhuyin:
+  opencc_config: pinyin.json
+  option_name: rvl_zhuyin
+  show_in_comment: true
+  comment_format:
+    - 'xform/&nbsp;/ /'
+  tips: char
+  tags:
+    - abc
+    - tigress
+rvlk1:
+  dictionary: PY_c
+  prefix: "P"
+  tips: "〔拼音单字反查〕"
+  enable_completion: true
+  enable_sentence: false
+  max_phrase_length: 99
+  initial_quality: -1
+  tag: rvlk1
+  preedit_format:
+    - "xform/([nl])v/$1ü/"
+    - "xform/([nl])ue/$1üe/"
+    - "xform/([jqxy])v/$1u/"
+  comment_format:
+    - "xform/^/ /"
+reverse_lookup:
+  db_class: tabledb
+  dictionary: PY_c
+  enable_charset_filter: false
+  enable_completion: true
+  enable_encoder: false
+  enable_sentence: false
+  enable_user_dict: false
+  encode_commit_history: false
+  prefix: "F"
+  initial_quality: 100000
+  max_phrase_length: 99
+  preedit_format:
+    - "xform/([nl])v/$1ü/"
+    - "xform/([nl])ue/$1üe/"
+    - "xform/([jqxy])v/$1u/"
+  comment_format:
+    - "xform/^/ /"
+  tips: "〔小鹤双拼反查〕"
+ci_reverse_lookup:
+  dictionary: tigress.extended
+  tips: "〔虎码滤镜〕"
+zh_trad:
+  opencc_config: st_tu.json
+  option_name: zh_trad
+  tips: all
+pinyin:
+  opencc_config: pinyin.json
+  option_name: pinyin
+  show_in_comment: true
+  comment_format:
+    - 'xform/&nbsp;/ /'
+  tips: char
+  tags:
+    - abc
+    - tigress
+easy_english:
+  dictionary: easy_english
+  tag: easy_english
+  prefix: "E"
+  tips: 〔En〕
+  enable_completion: true
+  enable_sentence: false
+  initial_quality: -1
+  preedit_format:
+    - "xlit|_| |"
+  comment_format:
+    - "xform/~/ /"
+stroke:
+  dictionary: stroke
+  tag: stroke
+  prefix: "B"
+  tips: "〔笔画〕"
+  enable_completion: true
+  enable_sentence: false
+  max_phrase_length: 99
+  initial_quality: -1
+  preedit_format:
+    - "xlit/hspnz/一丨丿丶ㄥ/"
+  comment_format:
+    - "xform/^/ /"
+new_spelling:
+  opencc_config: hu_cf.json
+  option_name: new_spelling
+  show_in_comment: true
+  comment_format:
+    - "xform/&nbsp;/ /"
+  tags:
+    - abc
+    - tigress
+  tips: all
+lua_reverse_db:
+  spelling: tigress_spelling
+  code: tigress_spelling
+recognizer:
+  import_preset: default
+  patterns:
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    mkst: "^[a-z]*`[a-z`]*$"
+    punct: "^/([0-9]0?|[A-Za-z]+)$"
+    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+    zhuyin: "~[a-y]*?$"
+    helper: '^help$'
+    reverse_lookup: "^F[a-z]*$"
+    stroke: "^B[a-z]*$"
+    rvlk1: "^P[a-z]*$"
+    easy_english: "^E[A-Z|a-z]*$"
+    expression: "^=.*$"
+emoji_cn:
+  opencc_config: emoji.json
+  option_name: emoji_cn
+  tips: all
+history:
+  input: z
+  size: 1
+  initial_quality: 1
+key_binder:
+  bindings:
+    - {send: Up, accept: Left, when: has_menu}
+    - {send: Down, accept: Right, when: has_menu}
+    - {send: Page_Up, accept: minus, when: has_menu}
+    - {send: Page_Down, accept: equal, when: has_menu}
+    - {send: space, accept: space, when: has_menu}
+    - {toggle: zh_trad, accept: "Control+Shift+F", when: always}
+    - {toggle: new_spelling, accept: "Control+Shift+H", when: always}
+    - {toggle: new_hide_pinyin, accept: "Control+Shift+J", when: always}
+    - {toggle: single_char, accept: "Control+Shift+K", when: always}
+    - {toggle: extended_char, accept: "Control+Shift+U", when: always}
+    - {toggle: charset_comment_filter, accept: "Control+Shift+O", when: always}
+    - {toggle: udpf_switch, accept: "Control+Shift+I", when: always}
+    - {toggle: rvl_zhuyin, accept: "Control+Shift+P", when: always}
+    - {toggle: emoji_cn, accept: "Control+Shift+Y", when: always}
+    - {toggle: single_char, accept: "Control+Shift+G", when: always}
+    - {accept: semicolon, send: 2, when: has_menu}
+    - {accept: apostrophe, send: 3, when: has_menu}
+    - {accept: KP_0, send: 0, when: composing}
+    - {accept: KP_1, send: 1, when: composing}
+    - {accept: KP_2, send: 2, when: composing}
+    - {accept: KP_3, send: 3, when: composing}
+    - {accept: KP_4, send: 4, when: composing}
+    - {accept: KP_5, send: 5, when: composing}
+    - {accept: KP_6, send: 6, when: composing}
+    - {accept: KP_7, send: 7, when: composing}
+    - {accept: KP_8, send: 8, when: composing}
+    - {accept: KP_9, send: 9, when: composing}
+    - {accept: KP_Decimal, send: period, when: composing}
+punctuator:
+  import_preset: symbols
+menu:
+  page_size: 7
+historyDM:
+  input: "z"
+  size: 1
+  initial_quality: 999
