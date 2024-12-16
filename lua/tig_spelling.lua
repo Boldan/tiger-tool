@@ -272,6 +272,16 @@ local function filter(input, env)
 						-- local rvlk_comment=
 						yield(Candidate(spelling_kw, cand.start, cand._end, cand.text, comment))
 					end
+				-- 拆分开关开启状态下，只显示拼音
+				elseif script_text:find("^[a-z]*") and not script_text:find("%p$") and env.engine.context:get_option("rvl_zhuyin") then
+						local code_comment=env.code_rvdb:lookup(cand.text)
+						if code_comment~="" then
+							code_comment=xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%3'..']'))
+							-- code_comment=xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%3'..' · '..'%1]'))
+							yield(Candidate("rvl_zhuyin", cand.start, cand._end, cand.text,code_comment))
+						else
+							yield(cand)
+						end
 				else
 					-- 拼音反查时显示拆分逻辑
 					if script_text:find("^[a-z]*") and not script_text:find("%p$") or script_text:find("^([%/])[a-z]*") and not script_text:find("%p$") then
