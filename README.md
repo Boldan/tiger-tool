@@ -19,10 +19,12 @@
   - Ctrl + Shift + O                                             
 # 9、字、字词模式
   - Ctrl + Shift + G
-# 10、拆分
-  - Ctrl + Shift + H
-    - 精减拆分                                               
-      - Ctrl + Shift + J            
-
+# 10、拆分      
+  - 拆分 + code + 拼音
+    - Ctrl + Shift + H     
+  - 保留拆分 + 余码                                               
+    - Ctrl + Shift + J
+  - 只保留拼音            
+    - Ctrl + Shift + P         
 # 11、繁简
   - Ctrl + Shift + F
