@@ -13,16 +13,16 @@
   - 任意字母大写 引导
 # 6、表情
   - Ctrl + Shift + Y
-# 6、Unicode编码
+# 7、Unicode编码
   - Ctrl + Shift + I
-# 7、Unicode分区           
+# 8、Unicode分区           
   - Ctrl + Shift + O                                             
-# 8、字、字词模式
+# 9、字、字词模式
   - Ctrl + Shift + G
-# 9、拆分
+# 10、拆分
   - Ctrl + Shift + H
     - 精减拆分                                               
       - Ctrl + Shift + J            
 
-# 10、繁简
+# 11、繁简
   - Ctrl + Shift + F
