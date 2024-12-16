@@ -48,8 +48,10 @@ switches:
     states: [ U区关, U区开 ]
   - name: udpf_switch
     reset: 0
-    states: [ U编关, U编开]
-  - name: new_spelling
+    states: [ U编关, U编开 ]
+  - name: pinyin
+    reset: 0
+    states: [ の , pīnyīn]
 engine:
   filters:
     - lua_filter@core2022
@@ -60,6 +62,7 @@ engine:
     - lua_filter@single_char
     - simplifier@emoji_cn
     - lua_filter@lua_unicode_display_filter
+    - lua_filter@charset_comment_filter
     - uniquifier
   processors:
     - ascii_composer
@@ -149,7 +152,7 @@ rvl_zhuyin:
   enable_charset_filter: false
   enable_completion: false
   enable_encoder: false
-  enable_sentence: true
+  enable_sentence: false
   enable_user_dict: false
   encode_commit_history: false
   initial_quality: 10
@@ -240,8 +243,9 @@ key_binder:
     - {toggle: charset_comment_filter, accept: "Control+Shift+O", when: always}
     - {toggle: udpf_switch, accept: "Control+Shift+I", when: always}
     - {toggle: rvl_zhuyin, accept: "Control+Shift+P", when: always}
+    # - {toggle: pinyin, accept: "Control+Shift+P", when: always}
     - {toggle: emoji_cn, accept: "Control+Shift+Y", when: always}
-    - {toggle: single_char, accept: "Control+Shift+G", when: always}
+    - {toggle: single_char, accept: "Control+Shift+K", when: always}
     - {accept: semicolon, send: 2, when: has_menu}
     - {accept: apostrophe, send: 3, when: has_menu}
     - {accept: KP_0, send: 0, when: composing}
