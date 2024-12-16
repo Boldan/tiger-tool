@@ -1,0 +1,118 @@
+# Rime dictionary: tiger.extended
+# encoding: utf-8
+
+---
+name: tiger.extended
+version: "2.0"
+sort: by_weight
+import_tables:
+  - tiger
+  
+columns:
+  - text
+  - code
+  - weight
+  - stem
+encoder:
+  rules:
+    - length_equal: 2
+      formula: "AaAbBaBb"
+    - length_equal: 3
+      formula: "AaBaCaCb"
+    - length_in_range: [4, 99]
+      formula: "AaBaCaZa"
+...
+：“	;q
+？	;w
+（	;e
+）	;r
+→	;t
+·	;y
+~	;u
+——	;i
+〖	;o
+〗	;p
+！	;a
+……	;s
+、	;d
+“	;f
+”	;g
+『	;h
+』	;j
+￥	;k
+%	;l
+：	;
+；	;
+|	;z
+【	;x
+】	;c
+《	;v
+》	;b
+「	;n
+」	;m
+1626511626	qq	2024	qq
+81616757@qq.com	yx	2024	yx
+1626511626@qq.com	yx	2024	yx
+81616757	qq	0	qq
+！	a	0	a
+》	b	0	b
+〉	b	0	b
+】	c	0	c
+〕	c	0	c
+、	d	0	d
+|	d	0	d
+（	e	0	e
+“	f	0	f
+‘	f	0	f
+”	g	0	g
+’	g	0	g
+『	h	0	h
+——	i	0	i
+—	i	0	i
+』	j	0	j
+￥	k	0	k
+$	k	0	k
+%	l	0	l
+」	m	0	m
+「	n	0	n
+〖	o	0	o
+〗	p	0	p
+：“	q	0	q
+：‘	q	0	q
+）	r	0	r
+……	s	0	s
+…	s	0	s
+→	t	0	t
+~	u	0	u
+《	v	0	v
+〈	v	0	v
+？	w	0	w
+【	x	0	x
+〔	x	0	x
+·	y	0	y
+疒丁㇆乛⺄㇗乚ヿㄋㄅ丰龶缶鬼乙六耒门皿片爿丬舌未	aaaa
+弓乂㐅彐彑卵卯面女氏聿肀云	bbbb
+不虫飞古火灬支及尸业	cccc
+口〇里民黾无旡由	dddd
+干见木朩欠彡𠂉穴也	eeee
+㡀辰骨冎一㇀且示礻亡亾	ffff
+歹歺高句丨亅士土韦羊⺷⺶芈	gggg
+八丷䒑癶夫谷子夂夊攵攴壴心忄⺗	hhh
+册丶㇏艮丩立舟糸纟予乡幺	iiii
+斗亼亽仑侖人亻豕入	jjjj
+寸亥㠯九母水氵⺍氺厶龴毋毌	kkkk
+艹廾丌艸齿而方廿龷千生卅夕卌牙	llll
+巴大二光户豸冂凵⺆两犬犭石	mmmm
+甫鬲黄勹匚コ马十𠂇戊戉王辛	nnnn
+贝川巛巜自几⺇日曰⺜矢尤尢	oooo
+长镸刀〢刂リ儿戈黑弋臼米鼠足⻊行走	pppp
+臣耳井老耂目牛牜⺧齐食饣田	qqqq
+非之巾囗(框)了皮七殳竹⺮瓦又ス	rrrr
+屮各止龰甲力尚龸言讠	ssss
+阝弗𢎨𠂔革衣衤斤龙丿㇒疋𤴓⺪三雨⻗用	tttt
+白辶工隹手扌龵廴	uuuu
+匕已己㐄毛乃气禸⽱山巳文西覀月⺝	vvvv
+乍冫⺀彳亍宀冖龟兔五鱼𩵋象页頁	wwww
+厂⺁⺈广禾鹿鸟束乌音	xxxx
+爪爫卜⺊车車瓜至曲四罒小⺌𡭔酉	yyyy
+豆甘虎虍金钅卩ㄗ⺋可	zzzz

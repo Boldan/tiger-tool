@@ -1,0 +1,46 @@
+# Rime table
+#@/db_name	tiger
+#@/db_type	tabledb
+#@/rime_version	1.11.2
+#@/tick	71
+来	a	3
+如	b	2
+不	c	1
+中	d	2
+也	e	1
+窝	ed	1
+一	f	1
+下	fy	2
+就	g	2
+道	h	2
+半	hu	2
+为	i	2
+人	j	1
+能	k	2
+而	l	1
+大	m	1
+码	mn	2
+在	n	2
+右	nd	1
+左	nu	1
+包	nvs	2
+是	o	2
+行	p	1
+都	q	4
+了	r	1
+围	rgw	2
+说	s	2
+我	t	4
+翻	tp	1
+的	u	2
+要	v	2
+得	w	4
+字	whi	1
+和	x	2
+到	y	2
+上	yf	2
+转	ym	1
+小	yx	1
+可	z	1
+其	zh	1
+虎	zhh	1
