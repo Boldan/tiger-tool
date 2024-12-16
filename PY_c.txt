@@ -1,0 +1,5 @@
+# Rime table
+#@/db_name	PY_c
+#@/db_type	tabledb
+#@/rime_version	1.11.2
+#@/tick	0
