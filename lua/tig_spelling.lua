@@ -1,4 +1,4 @@
-﻿local basic = require('lib/basic')
+local basic = require('lib/basic')
 local border = require('lib/border')
 local map = basic.map
 local index = basic.index
@@ -173,6 +173,8 @@ local function get_tricomment(cand, env)
 			if env.engine.context:get_option("new_hide_pinyin") then
 			-- return xform(spll_raw:gsub('%[(.-,.-),.+%]', '[%1]'))
 				 return xform(spll_raw:gsub('%[(.-),.+%]', '[%1]'))
+			elseif env.engine.context:get_option("new_pinyin") then
+				 return xform(spll_raw:gsub('%[(.-),.+%]', '[%1]'))
 			else
 				return xform(spll_raw:gsub('%[(.-),(.-),(.-),(.-)%]', '[%1'..' · '..'%2'..' · '..'%3]'))
 			end
@@ -241,6 +243,7 @@ local function filter(input, env)
 	local codetext=env.engine.context.input  -- 获取编码
 	local script_text=env.engine.context:get_script_text()
 	local hide_pinyin=env.engine.context:get_option("new_hide_pinyin")
+	local pinyin=env.engine.context:get_option("new_pinyin")
 	local schema_name=env.engine.schema.schema_name or ""
 	local schema_id=env.engine.schema.schema_id or ""
 	local spelling_states=env.engine.context:get_option(spelling_kw)
@@ -272,16 +275,6 @@ local function filter(input, env)
 						-- local rvlk_comment=
 						yield(Candidate(spelling_kw, cand.start, cand._end, cand.text, comment))
 					end
-				-- 拆分开关开启状态下，只显示拼音
-				elseif script_text:find("^[a-z]*") and not script_text:find("%p$") and env.engine.context:get_option("rvl_zhuyin") then
-						local code_comment=env.code_rvdb:lookup(cand.text)
-						if code_comment~="" then
-							code_comment=xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%3'..']'))
-							-- code_comment=xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%3'..' · '..'%1]'))
-							yield(Candidate("rvl_zhuyin", cand.start, cand._end, cand.text,code_comment))
-						else
-							yield(cand)
-						end
 				else
 					-- 拼音反查时显示拆分逻辑
 					if script_text:find("^[a-z]*") and not script_text:find("%p$") or script_text:find("^([%/])[a-z]*") and not script_text:find("%p$") then
@@ -296,9 +289,13 @@ local function filter(input, env)
 								if cand.comment:find("(☯)") then
 									segment.prompt=border_began .. "编码："..get_en_code(cand.text, env.spll_rvdb).. border_end
 									yield(cand)
+								elseif utf8.len(cand.text) == 1 and code_comment and pinyin then
+									yield(Candidate(spelling_kw, cand.start, cand._end, cand.text,xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%3]'))))
 								else
 									if utf8.len(cand.text) == 1 and code_comment and not hide_pinyin then
 										yield(Candidate(spelling_kw, cand.start, cand._end, cand.text,xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%1'..' · '..'%2'..' · '..'%3]'))))
+									elseif utf8.len(cand.text) == 1 and code_comment and pinyin then
+										yield(Candidate(spelling_kw, cand.start, cand._end, cand.text,xform(code_comment:gsub('%[(.-),(.-),(.-),(.-)%]', '[%3]'))))
 									else
 										yield(Candidate(spelling_kw, cand.start, cand._end, cand.text,add_comment:gsub(border_end," · ") .. cand.comment .. " " .. border_end))
 									end
