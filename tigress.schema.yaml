@@ -49,7 +49,7 @@ switches:
   - name: udpf_switch
     reset: 0
     states: [ U编关, U编开 ]
-  - name: pinyin
+  - name: new_pinyin
     reset: 0
     states: [ の , pīnyīn]
 engine:
@@ -242,7 +242,7 @@ key_binder:
     - {toggle: GB2312, accept: "Control+Shift+U", when: always}
     - {toggle: charset_comment_filter, accept: "Control+Shift+O", when: always}
     - {toggle: udpf_switch, accept: "Control+Shift+I", when: always}
-    - {toggle: rvl_zhuyin, accept: "Control+Shift+P", when: always}
+    - {toggle: new_pinyin, accept: "Control+Shift+P", when: always}
     # - {toggle: pinyin, accept: "Control+Shift+P", when: always}
     - {toggle: emoji_cn, accept: "Control+Shift+Y", when: always}
     - {toggle: single_char, accept: "Control+Shift+K", when: always}
